@@ -78,7 +78,11 @@ public final class RegexpTrie {
 		}
 		if (allSame) {
 			PatternUtils.escape(strs.get(i).charAt(depth), out);
-			buildRegexInDepth(strs, depth + 1, out);
+			if (i > 0) {
+				buildRegexInDepth(strs.subList(i, size), depth + 1, out);
+			} else {
+				buildRegexInDepth(strs, depth + 1, out);
+			}
 		} else {
 			// using `charAt(depth)` to split strs into sections
 			boolean first = true;
