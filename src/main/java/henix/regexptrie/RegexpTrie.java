@@ -21,6 +21,8 @@ import java.util.List;
  * n = number of strings
  *
  * space: O(n), time: O(nlogn * maxlen)
+ *
+ * @author henix
  */
 public final class RegexpTrie {
 
@@ -29,7 +31,6 @@ public final class RegexpTrie {
 		public CharAtComparator(int n) {
 			this.n = n;
 		}
-		@Override
 		public int compare(String s1, String s2) {
 			final int len1 = s1.length();
 			final int len2 = s2.length();
