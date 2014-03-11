@@ -6,7 +6,8 @@ public final class PatternUtils {
 
 	public static final String metaChars = "\\^$.()[]{}<>?*+|=:";
 
-	private static final BitSet isMetaChar = new BitSet(128);
+	private static final int METACHAR_LEN = 128;
+	private static final BitSet isMetaChar = new BitSet(METACHAR_LEN);
 
 	static {
 		final int len = metaChars.length();
@@ -19,7 +20,7 @@ public final class PatternUtils {
 	 * For performance, append result to out
 	 */
 	public static void escape(char ch, StringBuilder out) {
-		if (isMetaChar.get(ch)) {
+		if (ch < METACHAR_LEN && isMetaChar.get(ch)) {
 			out.append('\\');
 		}
 		out.append(ch);
